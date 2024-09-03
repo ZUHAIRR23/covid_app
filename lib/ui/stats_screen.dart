@@ -38,78 +38,129 @@ class _StatsScreenState extends State<StatsScreen> {
             );
           } else if (snapshot.hasData) {
             Stats stats = snapshot.data;
-            return ListView.builder(
-              padding: const EdgeInsets.all(8.0),
-              itemBuilder: (BuildContext context, int index) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 6.0),
-                  child: Card(
-                    elevation: 3,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+
+            Widget indonesiaStatsCard = Card(
+              elevation: 3,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Overall Data in Indonesia',
+                      style: TextStyle(
+                        fontFamily: 'PirataOne',
+                        fontSize: 30.0,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                    child: ListTile(
-                      leading: CircleAvatar(
-                        backgroundColor: Colors.blueAccent[100],
-                        child: const Icon(Icons.bar_chart,
-                            color: Colors.blueAccent),
-                      ),
-                      title: Text(
-                        '${stats.regions![index].name}',
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      subtitle: Text(
-                        '${stats.regions?[index].type}',
-                        style: const TextStyle(color: Colors.grey),
-                      ),
-                      onTap: () {
-                        showDialog(
-                          context: context,
-                          builder: (context) {
-                            return AlertDialog(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              title: Center(
-                                child: Text(
-                                  stats.regions![index].name ?? 'No Name',
-                                  style: const TextStyle(
-                                      fontSize: 24.0,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              content: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  buildStatRow(
-                                      'Infected', stats.numbers?.infected),
-                                  const SizedBox(height: 8.0),
-                                  buildStatRow(
-                                      'Recovered', stats.numbers?.recovered),
-                                  const SizedBox(height: 8.0),
-                                  buildStatRow('Fatal', stats.numbers?.fatal),
-                                ],
-                              ),
-                              actions: [
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                  child: const Text('Close'),
-                                ),
-                              ],
+                    const SizedBox(height: 10),
+                    buildStatRow(
+                      'Infected',
+                      stats.numbers?.infected,
+                    ),
+                    buildStatRow(
+                      'Recovered',
+                      stats.numbers?.recovered,
+                    ),
+                    buildStatRow(
+                      'Fatal',
+                      stats.numbers?.fatal,
+                    ),
+                  ],
+                ),
+              ),
+            );
+
+            return ListView(
+              padding: const EdgeInsets.all(8.0),
+              children: [
+                indonesiaStatsCard,
+                const SizedBox(height: 10),
+                ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: stats.regions!.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 6.0),
+                      child: Card(
+                        elevation: 3,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: ListTile(
+                          leading: CircleAvatar(
+                            backgroundColor: Colors.blueAccent[100],
+                            child: const Icon(Icons.bar_chart,
+                                color: Colors.blueAccent),
+                          ),
+                          title: Text(
+                            '${stats.regions![index].name}',
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          subtitle: Text(
+                            '${stats.regions?[index].type}',
+                            style: const TextStyle(color: Colors.grey),
+                          ),
+                          onTap: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                  title: Center(
+                                    child: Text(
+                                      stats.regions![index].name ?? 'No Name',
+                                      style: const TextStyle(
+                                          fontSize: 24.0,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                  content: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      buildStatRow(
+                                          'Infected',
+                                          stats.regions?[index].numbers
+                                              ?.infected),
+                                      const SizedBox(height: 8.0),
+                                      buildStatRow(
+                                          'Recovered',
+                                          stats.regions?[index].numbers
+                                              ?.recovered),
+                                      const SizedBox(height: 8.0),
+                                      buildStatRow('Fatal',
+                                          stats.regions?[index].numbers?.fatal),
+                                    ],
+                                  ),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: const Text('Close'),
+                                    ),
+                                  ],
+                                );
+                              },
                             );
                           },
-                        );
-                      },
-                    ),
-                  ),
-                );
-              },
-              itemCount: stats.regions!.length,
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ],
             );
           } else {
             return const Center(
