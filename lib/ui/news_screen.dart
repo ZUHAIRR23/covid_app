@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/model/news.dart';
 import 'package:untitled/service/api_service.dart';
+import 'package:intl/intl.dart';
 
 class NewsScreen extends StatefulWidget {
   const NewsScreen({super.key});
@@ -49,8 +50,12 @@ class _NewsScreenState extends State<NewsScreen> {
                             borderRadius: BorderRadius.circular(15),
                           ),
                           title: Text(
-                            '${newsItem.timestamp}',
-                            style: const TextStyle(fontWeight: FontWeight.bold),
+                            DateFormat('dd/MM/yyyy').format(
+                              DateTime.fromMillisecondsSinceEpoch(
+                                newsItem.timestamp ?? 0,
+                              ),
+                            ),
+                            style: TextStyle(fontFamily: 'Oswald'),
                           ),
                           content: Text(
                             '${newsItem.url}',
@@ -99,11 +104,12 @@ class _NewsScreenState extends State<NewsScreen> {
                               ),
                               const SizedBox(height: 5),
                               Text(
-                                '${newsItem.timestamp}',
-                                style: const TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 14,
+                                DateFormat('dd/MM/yyyy').format(
+                                  DateTime.fromMillisecondsSinceEpoch(
+                                    newsItem.timestamp ?? 0,
+                                  ),
                                 ),
+                                style: TextStyle(fontFamily: 'Oswald'),
                               ),
                             ],
                           ),

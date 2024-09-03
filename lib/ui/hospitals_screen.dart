@@ -100,6 +100,10 @@ class _HospitalsScreenState extends State<HospitalsScreen> {
                                   'Address: ${hospital.address}',
                                   style: TextStyle(fontSize: 20.0),
                                 ),
+                                Text(
+                                  'Province: ${hospital.province}',
+                                  style: TextStyle(fontSize: 20.0),
+                                ),
                               ],
                             ),
                             actions: [

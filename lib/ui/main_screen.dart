@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/model/hoaxes.dart';
 import 'package:untitled/service/api_service.dart';
+import 'package:intl/intl.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen(
@@ -166,7 +167,14 @@ class _MainScreenState extends State<MainScreen> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            subtitle: Text('${hoaxes[index].timestamp}'),
+            subtitle: Text(
+              DateFormat('dd/MM/yyyy').format(
+                DateTime.fromMillisecondsSinceEpoch(
+                  hoaxes[index].timestamp ?? 0,
+                ),
+              ),
+              style: TextStyle(fontFamily: 'Oswald'),
+            ),
             onTap: () {
               showDialog(
                 context: context,
