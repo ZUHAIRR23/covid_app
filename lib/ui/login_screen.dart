@@ -25,9 +25,9 @@ class _LoginScreenState extends State<LoginScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/images/logo.png',
+              'assets/images/covid.png',
               fit: BoxFit.cover,
-              width: 75,
+              width: 200,
             ),
             SizedBox(
               height: 10.0,
@@ -35,8 +35,8 @@ class _LoginScreenState extends State<LoginScreen> {
             Text(
               'Sign In',
               style: TextStyle(
-                fontFamily: 'Oswald',
-                fontSize: 24.0,
+                fontFamily: 'PirataOne',
+                fontSize: 30.0,
               ),
             ),
             SizedBox(
@@ -82,7 +82,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: ElevatedButton(
                   onPressed: () {
                     setState(
-                          () {
+                      () {
                         if (usernameController.text.isEmpty) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
@@ -112,7 +112,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                 username: usernameController.text,
                                 password: passwordController.text,
                               ),
-                            ), (route) => false,
+                            ),
+                            (route) => false,
                           );
                         }
                       },
@@ -126,7 +127,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   child: Text(
                     'Login',
-                    style: TextStyle(fontFamily: 'Oswald', color: Colors.white),
+                    style: TextStyle(
+                      fontFamily: 'Oswald',
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),
@@ -140,7 +144,7 @@ class _LoginScreenState extends State<LoginScreen> {
               },
               style: ButtonStyle(
                   elevation: WidgetStatePropertyAll(5.0),
-                  backgroundColor: WidgetStatePropertyAll(Colors.blue)),
+                  backgroundColor: WidgetStatePropertyAll(Colors.red)),
               child: Text(
                 'Register',
                 style: TextStyle(

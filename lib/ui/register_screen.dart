@@ -23,15 +23,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Image.asset(
-              'assets/images/logo.png',
+              'assets/images/covid.png',
               fit: BoxFit.cover,
-              width: 100.0,
+              width: 200.0,
             ),
             Text(
               'Register to create an account',
               style: TextStyle(
-                fontFamily: 'Oswald',
-                fontSize: 18.0,
+                fontFamily: 'PirataOne',
+                fontSize: 30.0,
               ),
             ),
             SizedBox(

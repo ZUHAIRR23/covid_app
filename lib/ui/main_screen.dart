@@ -136,6 +136,12 @@ class _MainScreenState extends State<MainScreen> {
                 Navigator.pushNamed(context, '/stats');
               },
             ),
+            IconButton(
+              icon: const Icon(Icons.logout, color: Colors.white),
+              onPressed: () {
+                Navigator.pushNamed(context, '/login');
+              },
+            ),
           ],
         ),
       ),
