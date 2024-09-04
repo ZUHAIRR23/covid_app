@@ -27,7 +27,7 @@ class _MainScreenState extends State<MainScreen> {
           'Covid-19 Info',
           style: TextStyle(
             fontFamily: 'PirataOne',
-            fontSize: 30.0,
+            fontSize: 40.0,
           ),
         ),
         backgroundColor: Colors.lightGreen,

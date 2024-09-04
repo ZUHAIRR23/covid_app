@@ -20,7 +20,7 @@ class _StatsScreenState extends State<StatsScreen> {
           'Stats',
           style: TextStyle(
             fontFamily: 'PirataOne',
-            fontSize: 30.0,
+            fontSize: 40.0,
           ),
         ),
         backgroundColor: Colors.blueAccent,
@@ -80,6 +80,14 @@ class _StatsScreenState extends State<StatsScreen> {
               children: [
                 indonesiaStatsCard,
                 const SizedBox(height: 10),
+                const Text(
+                  'Region',
+                  style: TextStyle(
+                    fontFamily: 'PirataOne',
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
                 ListView.builder(
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
@@ -139,8 +147,10 @@ class _StatsScreenState extends State<StatsScreen> {
                                           stats.regions?[index].numbers
                                               ?.recovered),
                                       const SizedBox(height: 8.0),
-                                      buildStatRow('Fatal',
-                                          stats.regions?[index].numbers?.fatal),
+                                      buildStatRow(
+                                        'Fatal',
+                                        stats.regions?[index].numbers?.fatal,
+                                      ),
                                     ],
                                   ),
                                   actions: [

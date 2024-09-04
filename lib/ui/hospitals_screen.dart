@@ -20,7 +20,7 @@ class _HospitalsScreenState extends State<HospitalsScreen> {
           'Hospitals',
           style: TextStyle(
             fontFamily: 'PirataOne',
-            fontSize: 30.0,
+            fontSize: 40.0,
           ),
         ),
         backgroundColor: Colors.redAccent,
