@@ -69,32 +69,40 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   Widget _buildCompactProfile() {
-    return Center(
-      child: Column(
-        children: [
-          CircleAvatar(
-            radius: 40.0, // Reduced size
-            backgroundColor: Colors.grey[200],
-            child: const Icon(
-              Icons.person,
-              size: 40.0, // Reduced icon size
-              color: Colors.lightGreen,
-            ),
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // Profile Picture
+        CircleAvatar(
+          radius: 50.0,
+          backgroundColor: Colors.grey[200],
+          child: const Icon(
+            Icons.person,
+            size: 50.0,
+            color: Colors.lightGreen,
           ),
-          const SizedBox(height: 12.0),
-          Text(
-            'Welcome, ${widget.username ?? "User"}!',
-            style: const TextStyle(
-              fontFamily: 'PirataOne',
-              fontSize: 25.0, // Smaller font size
-              fontWeight: FontWeight.bold,
-            ),
+        ),
+        const SizedBox(width: 16.0),
+        // User Information
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Welcome, ${widget.username ?? "User"}!',
+                style: const TextStyle(
+                  fontFamily: 'PirataOne',
+                  fontSize: 25.0, // Smaller font size
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 8.0),
+              _buildUserInfo('First Name', widget.firstName),
+              _buildUserInfo('Last Name', widget.lastName),
+            ],
           ),
-          const SizedBox(height: 8.0),
-          _buildUserInfo('First Name', widget.firstName),
-          _buildUserInfo('Last Name', widget.lastName),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
