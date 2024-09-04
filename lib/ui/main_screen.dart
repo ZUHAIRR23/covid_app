@@ -72,7 +72,6 @@ class _MainScreenState extends State<MainScreen> {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Profile Picture
         CircleAvatar(
           radius: 50.0,
           backgroundColor: Colors.grey[200],
@@ -83,7 +82,6 @@ class _MainScreenState extends State<MainScreen> {
           ),
         ),
         const SizedBox(width: 16.0),
-        // User Information
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -92,7 +90,7 @@ class _MainScreenState extends State<MainScreen> {
                 'Welcome, ${widget.username ?? "User"}!',
                 style: const TextStyle(
                   fontFamily: 'PirataOne',
-                  fontSize: 25.0, // Smaller font size
+                  fontSize: 25.0,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -108,11 +106,11 @@ class _MainScreenState extends State<MainScreen> {
 
   Widget _buildUserInfo(String label, String? value) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 2.0), // Less vertical space
+      padding: const EdgeInsets.symmetric(vertical: 2.0),
       child: Text(
         '$label: ${value ?? "N/A"}',
         style: const TextStyle(
-          fontSize: 14.0, // Smaller font size
+          fontSize: 14.0,
         ),
       ),
     );
@@ -128,25 +126,37 @@ class _MainScreenState extends State<MainScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             IconButton(
-              icon: const Icon(Icons.local_hospital, color: Colors.white),
+              icon: const Icon(
+                Icons.local_hospital,
+                color: Colors.white,
+              ),
               onPressed: () {
                 Navigator.pushNamed(context, '/hospitals');
               },
             ),
             IconButton(
-              icon: const Icon(Icons.article, color: Colors.white),
+              icon: const Icon(
+                Icons.article,
+                color: Colors.white,
+              ),
               onPressed: () {
                 Navigator.pushNamed(context, '/news');
               },
             ),
             IconButton(
-              icon: const Icon(Icons.bar_chart, color: Colors.white),
+              icon: const Icon(
+                Icons.bar_chart,
+                color: Colors.white,
+              ),
               onPressed: () {
                 Navigator.pushNamed(context, '/stats');
               },
             ),
             IconButton(
-              icon: const Icon(Icons.logout, color: Colors.white),
+              icon: const Icon(
+                Icons.logout,
+                color: Colors.white,
+              ),
               onPressed: () {
                 Navigator.pushNamed(context, '/login');
               },
