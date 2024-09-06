@@ -191,7 +191,7 @@ class _MainScreenState extends State<MainScreen> {
                   hoaxes[index].timestamp ?? 0,
                 ),
               ),
-              style: TextStyle(fontFamily: 'Oswald'),
+              style: const TextStyle(fontFamily: 'Oswald'),
             ),
             onTap: () {
               showDialog(
@@ -206,7 +206,7 @@ class _MainScreenState extends State<MainScreen> {
                     actions: [
                       TextButton(
                         onPressed: () => Navigator.pop(context),
-                        child: Text('Close'),
+                        child: const Text('Close'),
                       ),
                     ],
                   );
