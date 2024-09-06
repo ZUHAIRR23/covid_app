@@ -50,7 +50,7 @@ class _StatsScreenState extends State<StatsScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      'Overall Data in Indonesia',
+                      'Overall Data In Indonesia',
                       style: TextStyle(
                         fontFamily: 'PirataOne',
                         fontSize: 30.0,
